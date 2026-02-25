@@ -1,6 +1,45 @@
 package com.imb2025.smedico.service;
 
-import java.util.List;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*import java.util.List;
 
 import org.springframework.stereotype.Service;
 
@@ -14,3 +53,4 @@ public interface IMedioPagoService {
     public MedioPago update(Long id, MedioPago medioPago);
     public void deleteById(Long id);  
 }
+*/

@@ -1,5 +1,48 @@
 package com.imb2025.smedico.controller;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +57,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.imb2025.smedico.entity.MedioPago;
 import com.imb2025.smedico.service.IMedioPagoService;
+*/
 
-@RestController
-@RequestMapping("/mediopago")
-public class MedioPagoController {
+//@RestController
+//@RequestMapping("/mediopago")
+/*public class MedioPagoController {
 	
 	@Autowired
 	private final IMedioPagoService service;
-	
+	*/
+/*
 	public MedioPagoController(IMedioPagoService service) {
 	    this.service = service;
 	}
@@ -53,7 +98,10 @@ public class MedioPagoController {
 		service.deleteById(id);
 		return "Selección de medio de pago "+id.toString()+ " cancelada.";
 	}
-	**/
+	*/
 	
-	
+/*	
 }  
+
+
+*/

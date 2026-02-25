@@ -1,11 +1,67 @@
 package com.imb2025.smedico.entity;
 
+
+//@Entity		
+public class MedioPago {
+	
+	private Double id;
+	private String nombre;
+	private Tipo tipo;
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+*/
+/*
 @Entity
 public class MedioPago {
 
@@ -55,3 +111,4 @@ public class MedioPago {
 	}
 	
 }
+*/

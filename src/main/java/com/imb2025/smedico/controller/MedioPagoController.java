@@ -9,51 +9,56 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.imb2025.smedico.entity.MedioPago;
 import com.imb2025.smedico.service.IMedioPagoService;
 
 @RestController
-@RequestMapping("/mediopago")
 public class MedioPagoController {
 	
 	@Autowired
-	private final IMedioPagoService service;
-	
-	public MedioPagoController(IMedioPagoService service) {
-	    this.service = service;
+	private IMedioPagoService service;
+
+    MedioPagoController() {
+    } 
+    
+    
+	@GetMapping("/mediopago")
+	public List<MedioPago> findAll() {
+		 
+		return service.findAll();
 	}
 	
-	@GetMapping //("/")
-	public List<MedioPago>findAllMedioPago(){
-		return service.findAll(); 
+	@GetMapping("/mediopago/{id}")
+	public MedioPago findById(@PathVariable Long id) {
+		
+		return service.findById(id);
 	}
 	
-	@GetMapping("/{idmediopago}")
-	public MedioPago findMedioPagoByid(@PathVariable("idmediopago") Long id) {
-		return service.findById(id); //ESTA MAL
-	}
-	
-	@PostMapping //("/")
-    public MedioPago createMedioPago(@RequestBody MedioPago mediopago) {
-        return service.save(mediopago);
-    }
-	
-	@PutMapping 
-	public MedioPago updateMedioPago(@RequestBody MedioPago mediopago) {
+	@PostMapping("/mediopago")
+	public MedioPago create(@RequestBody MedioPago mediopago){ 
+		
 		return service.save(mediopago);
 	}
 	
-	
-	/*
-	@DeleteMapping("/{idmediopago}")
-	public String deleteMedioPago(@PathVariable("idmediopago") Long id) {
-		service.deleteById(id);
-		return "Selección de medio de pago "+id.toString()+ " cancelada.";
+	@PutMapping("/mediopago/{id}")
+	public MedioPago update(@PathVariable Long id, @RequestBody MedioPago mediopago){
+		
+		MedioPago mpExistente = service.findById(id);
+		
+		if(mpExistente == null) {
+			throw new RuntimeException("El regsitro de id "+ id + " no existe en la base de datos");
+		}
+		
+		mpExistente.setNombre(mediopago.getNombre());
+		mpExistente.setTipo(mediopago.getTipo());
+		
+		return service.save(mpExistente);
 	}
-	**/
 	
-	
-}  
+	@DeleteMapping("/mediopago/{id}")
+	public void delete(@PathVariable Long id){
+		service.delete(id);
+	}
+
+}

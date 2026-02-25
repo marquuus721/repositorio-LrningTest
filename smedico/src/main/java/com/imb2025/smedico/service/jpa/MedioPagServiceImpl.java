@@ -1,5 +1,43 @@
 package com.imb2025.smedico.service.jpa;
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 import java.util.List;
 import java.util.Optional;
 
@@ -8,8 +46,10 @@ import org.springframework.stereotype.Service;
 import com.imb2025.smedico.repository.MedioPagoRepository;
 import com.imb2025.smedico.entity.MedioPago;
 import com.imb2025.smedico.service.IMedioPagoService;
+*/
 
-@Service
+//@Service
+/*
 public class MedioPagoServiceImpl implements IMedioPagoService {
 	
 	@Autowired
@@ -17,9 +57,9 @@ public class MedioPagoServiceImpl implements IMedioPagoService {
 	
 	/*public MedioPagoServiceImpl(MedioPagoRepository repo) {
         this.repo = repo;
-    }**/
+    }*/
 	
-	@Override
+	/*@Override
 	public List<MedioPago> findAll() {
 		return repo.findAll();
 	}
@@ -56,4 +96,4 @@ public class MedioPagoServiceImpl implements IMedioPagoService {
 		repo.deleteById(id);
 	}
 	
-}
+}*/
