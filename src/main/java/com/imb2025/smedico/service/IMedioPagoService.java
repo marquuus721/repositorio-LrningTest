@@ -12,6 +12,6 @@ public interface IMedioPagoService {
 	public MedioPago findById(Long id);
 	public MedioPago save(MedioPago mediopago);
 	public MedioPago update (Long id, MedioPago mediopago) throws Exception;
-	public void delete(Long id);
+	public void deleteById(Long id) throws Exception;
 	public MedioPago crearMedioPago(MedioPagoRequestDTO dtor) throws Exception;
 }

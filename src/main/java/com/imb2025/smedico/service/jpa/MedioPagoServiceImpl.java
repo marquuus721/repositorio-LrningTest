@@ -50,10 +50,15 @@ public class MedioPagoServiceImpl implements IMedioPagoService {
 	}	
 	
 	@Override
-	public void delete(Long id) {
-		repo.deleteById(id);
+	public void deleteById(Long id) throws Exception{
+		if(repo.existsById(id)) {
+			repo.deleteById(id);
+		}else {
+			throw new Exception ("Registro de id "+ id +" No encontrado.");
+		}
 	}
 
+	//este el conocido fromDtro
 	@Override
 	public MedioPago crearMedioPago(MedioPagoRequestDTO dtor) throws Exception{ 
 		
@@ -69,5 +74,10 @@ public class MedioPagoServiceImpl implements IMedioPagoService {
 		
 		return mediopago; 
 	}
+	
+	public boolean existById (Long id) {
+		return repo.existsById(id);
+	}
+	
 
 }
