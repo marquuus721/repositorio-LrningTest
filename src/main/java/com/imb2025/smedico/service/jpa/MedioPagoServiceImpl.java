@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.imb2025.smedico.dto.MedioPagoRequestDTO;
 import com.imb2025.smedico.entity.MedioPago;
 import com.imb2025.smedico.repository.MedioPagoRepository;
 import com.imb2025.smedico.service.IMedioPagoService;
@@ -22,10 +24,10 @@ public class MedioPagoServiceImpl implements IMedioPagoService {
 	
 	@Override
 	public MedioPago findById(Long id) {
-		Optional <MedioPago> opt= repo.findById(id);
+		Optional <MedioPago> optMp= repo.findById(id);
 		
-		if(opt.isPresent()) {
-			return opt.get();
+		if(optMp.isPresent()) {
+			return optMp.get();
 		}else {
 			return null;
 		}
@@ -37,8 +39,45 @@ public class MedioPagoServiceImpl implements IMedioPagoService {
 	}
 	
 	@Override
-	public void delete(Long id) {
-		repo.deleteById(id);
+	public MedioPago update(Long id, MedioPago mediopago) throws Exception {
+	
+		if(repo.existsById(id)){
+			mediopago.setId(id);
+			return repo.save(mediopago);
+		}else {
+			throw new Exception("Medio de pago de id: "+ id +" No encontrado!");
+		}
+	}	
+	
+	@Override
+	public void deleteById(Long id) throws Exception{
+		if(repo.existsById(id)) {
+			repo.deleteById(id);
+		}else {
+			throw new Exception ("Registro de id "+ id +" No encontrado.");
+		}
 	}
+
+	//este el conocido fromDtro
+	@Override
+	public MedioPago crearMedioPago(MedioPagoRequestDTO dtor) throws Exception{ 
+		
+		if(dtor.getNombre() == null || dtor.getNombre().isBlank() ) {
+			throw new IllegalArgumentException("El campo Nombre esta vacio. Ingrese un valor");
+			
+		}if(dtor.getTipo() == null || dtor.getTipo().toString().isBlank()) {
+			throw new IllegalArgumentException("El campo Tipo esta vacio. Ingrese un valor");
+		}
+		MedioPago mediopago = new MedioPago();
+		mediopago.setNombre(dtor.getNombre());
+		mediopago.setTipo(dtor.getTipo());
+		
+		return mediopago; 
+	}
+	
+	public boolean existById (Long id) {
+		return repo.existsById(id);
+	}
+	
 
 }
